@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+<style>
+    /* General Reset and Styling */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0; /* Light background color */
+        position: relative;
+        overflow: hidden;
+    }
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+    .admin-login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+
+    .login-form {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .login-form h1 {
+        color: #385185; /* Facebook blue or Instagram gradient */
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .input-container {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .input-container i {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        color: #385185; /* Facebook blue or Instagram gradient */
+    }
+
+    .input-container input {
+        width: calc(100% - 40px);
+        padding: 12px 15px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+
+    .input-container input:focus {
+        border-color: #385185; /* Facebook blue or Instagram gradient */
+    }
+
+    .submitbtn {
+        display: inline-block;
+        width: 100%;
+        padding: 14px;
+        font-size: 18px;
+        color: #fff;
+        background-color: #385185; /* Facebook blue or Instagram gradient */
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .submitbtn:hover {
+        background-color: #2a3f5f; /* Darker shade of Facebook blue or Instagram gradient */
+    }
+</style>
+</head>
+<body>
+
+    <!-- Background Image as <img> tag -->
+    <img src="./files/background.jpg" alt="Background Image" class="background-image">
+
+    <section class="admin-login">
+        <div class="login-form">
+            <h1>Admin Login</h1>
+            <form id="adminLoginForm" onsubmit="return validateAdmin()">
+                <div class="input-container">
+                    <i class="fas fa-user"></i>
+                    <input type="text" name="username" placeholder="Username" id="adminUsername" required>
+                </div>
+                <div class="input-container">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password" placeholder="Password" id="adminPassword" required>
+                </div>
+                <input type="submit" value="Login" class="submitbtn">
+            </form>
+        </div>
+    </section>
+
+    <script>
+        function validateAdmin() {
+            var username = document.getElementById("adminUsername").value;
+            var password = document.getElementById("adminPassword").value;
+            
+            if (username === "ravi" && password === "nikenduku123") {
+                window.location.href = "./donation.json"; // Redirect to the desired page
+                return false;
+            } else {
+                alert("Invalid username or password. Please try again.");
+                return false;
+            }
+        }
+    </script>
+
+</body>
+</html>

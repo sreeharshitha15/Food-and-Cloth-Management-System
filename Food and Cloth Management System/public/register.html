@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShareWear | Register</title>
+    <link rel="icon" href="./files/logo.png">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+
+<!-- Background & Header -->
+
+<div class="banner">
+    <img src="./files/bg.jpg">
+    <div class="content"> 
+        <nav>
+            <img src="./files/logo.png" class="logo" alt="Logo" title="ShareWear">
+            <ul class="navbar">
+                <li>
+                    <a href="/index.html">Home</a>
+                    <a href="/about.html">About Us</a>
+                    <a href="/contact.html">Contact Us</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="title">
+            <h1>ShareWear</h1>
+            <p>“If you’re throwing away food, you’re throwing away life.” – Anthony Bourdain</p>
+        </div>
+    </div>
+</div>
+
+<!-- Registration Form -->
+
+<section id="register-section" class="register-section">
+    <div class="register-container">
+        <h2>Register</h2>
+        <form id="registerForm">
+            <div class="input-group">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+            <button type="submit" class="button">Register</button>
+        </form>
+        <p>Already have an account? <a href="/login.html">Login here</a></p>
+    </div>
+</section>
+
+<!-- Footer -->
+<!---
+<section class="footer">
+    <div class="foot">
+        <div class="footer-content">
+            <div class="footlinks">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/register.html">Donate</a></li>
+                    <li><a href="/about.html">About Us</a></li>
+                    <li><a href="/contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="end">
+        <p>Tel: 1800-00-000 Email: support@ShareWear.com | Copyright © 2023 ShareWear | All Rights Reserved.</p>
+    </div>
+</section> -->
+
+<!-- Javascript -->
+<script>
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var fullname = document.getElementById('fullname').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirm_password').value;
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match. Please try again.");
+            return;
+        }
+
+        var user = {
+            fullname: fullname,
+            email: email,
+            password: password
+        };
+
+        localStorage.setItem('user_' + email, JSON.stringify(user));
+        alert("Registration successful! Redirecting to login page.");
+
+        // Redirect to login page
+        window.location.href = './login.html';
+    });
+
+    // Scroll to the registration form when the page loads
+    window.onload = function() {
+        document.getElementById('register-section').scrollIntoView({ behavior: 'smooth' });
+    };
+</script>
+
+</body>
+</html>
